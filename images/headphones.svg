@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#1f2a44"/>
+  <!-- headband -->
+  <path d="M45 115 C45 55, 155 55, 155 115" stroke="#f4f1de" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <!-- ear cups -->
+  <rect x="30" y="105" width="34" height="55" rx="12" fill="#3da5d9"/>
+  <rect x="136" y="105" width="34" height="55" rx="12" fill="#3da5d9"/>
+  <!-- sound waves -->
+  <path d="M85 135 L92 120 L99 150 L106 112 L113 140 L120 128" stroke="#f9c74f" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

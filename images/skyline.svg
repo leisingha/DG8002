@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <rect width="400" height="200" fill="#1f2a44"/>
+  <circle cx="330" cy="45" r="18" fill="#f9c74f"/>
+  <!-- tall tower -->
+  <rect x="196" y="40" width="8" height="140" fill="#f4f1de"/>
+  <ellipse cx="200" cy="95" rx="16" ry="8" fill="#f4f1de"/>
+  <!-- buildings -->
+  <rect x="40" y="120" width="40" height="60" fill="#3da5d9"/>
+  <rect x="90" y="100" width="30" height="80" fill="#2b7fb0"/>
+  <rect x="130" y="130" width="50" height="50" fill="#3da5d9"/>
+  <rect x="220" y="110" width="35" height="70" fill="#2b7fb0"/>
+  <rect x="265" y="125" width="45" height="55" fill="#3da5d9"/>
+  <rect x="320" y="105" width="30" height="75" fill="#2b7fb0"/>
+  <!-- water -->
+  <rect x="0" y="180" width="400" height="20" fill="#14304a"/>
+</svg>

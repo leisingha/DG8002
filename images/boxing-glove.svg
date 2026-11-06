@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#1f2a44"/>
+  <!-- glove body -->
+  <path d="M60 120 C40 70, 70 35, 115 40 C155 45, 165 85, 150 115 C145 128, 135 135, 120 138 L80 138 C70 136, 63 130, 60 120 Z" fill="#d7263d"/>
+  <!-- thumb -->
+  <path d="M62 112 C48 105, 45 88, 58 82 C68 78, 78 88, 80 100 Z" fill="#b51f33"/>
+  <!-- highlight -->
+  <path d="M90 55 C105 48, 125 50, 135 60" stroke="#ff8a9a" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- cuff -->
+  <rect x="76" y="136" width="50" height="34" rx="6" fill="#f4f1de"/>
+  <rect x="76" y="148" width="50" height="6" fill="#d7263d"/>
+</svg>
