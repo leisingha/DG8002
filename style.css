@@ -1,0 +1,226 @@
+/* =========================================================
+   TAG-Me Extreme Makeover - style.css
+   Shared stylesheet for index.html and classified.html
+   ========================================================= */
+
+
+/* ---------- 1. Element selectors: base look ---------- */
+
+* {
+  box-sizing: border-box; /* padding and border count inside the width */
+}
+
+body {
+  margin: 0;
+  background-color: #f4f1de;   /* warm off-white */
+  color: #1f2a44;              /* dark navy text */
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2;
+}
+
+h2 {
+  color: #d7263d;              /* glove red */
+  margin-top: 0;
+}
+
+h3 {
+  color: #2b7fb0;
+}
+
+a {
+  color: #2b7fb0;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #d7263d;
+}
+
+img {
+  max-width: 100%;             /* images never overflow their box */
+  height: auto;
+  border-radius: 8px;
+}
+
+
+/* ---------- 2. ID selectors: header and navigation ---------- */
+
+#site-header {
+  background-color: #1f2a44;
+  color: #f4f1de;
+  text-align: center;
+  padding: 30px 20px 10px 20px;
+  border-bottom: 6px solid #d7263d;
+}
+
+#site-header h1 {
+  margin: 0;
+  font-size: 48px;
+  letter-spacing: 2px;
+}
+
+/* Flexbox layout #1: the navigation bar */
+#main-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 10px 0;
+}
+
+#main-nav a {
+  display: block;
+  color: #f4f1de;
+  text-decoration: none;
+  padding: 8px 18px;
+  border: 2px solid #f4f1de;
+  border-radius: 20px;
+}
+
+#main-nav a:hover {
+  background-color: #f9c74f;
+  border-color: #f9c74f;
+  color: #1f2a44;
+}
+
+
+/* ---------- 3. Page layout ---------- */
+
+main {
+  width: 90%;                  /* flexible width */
+  max-width: 900px;
+  margin: 30px auto;           /* centers the main column */
+}
+
+footer {
+  background-color: #1f2a44;
+  color: #f4f1de;
+  text-align: center;
+  padding: 15px;
+  font-size: 15px;
+}
+
+
+/* ---------- 4. Reusable classes ---------- */
+
+/* .card is used on every section and on the fact boxes */
+.card {
+  background-color: #ffffff;
+  border: 2px solid #1f2a44;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 4px 4px 0 #1f2a44;
+}
+
+/* .tagline is used in the header of both pages */
+.tagline {
+  font-style: italic;
+  color: #f9c74f;
+  margin: 8px 0;
+}
+
+/* Flexbox layout #2: profile card (image beside text) */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.profile-card img {
+  width: 180px;
+}
+
+/* Character stats panel */
+.stat-panel {
+  background-color: #1f2a44;
+  color: #f4f1de;
+  border-left: 8px solid #f9c74f;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-top: 20px;
+}
+
+.stat-panel h3 {
+  color: #f9c74f;
+  margin-top: 0;
+}
+
+.skill {
+  margin-bottom: 10px;
+}
+
+/* Flexbox layout #3: row of fun fact cards */
+.fact-row {
+  display: flex;
+  gap: 20px;
+}
+
+.fact {
+  flex: 1;                     /* each fact card takes an equal share */
+  margin-bottom: 0;
+  background-color: #eaf4fb;
+}
+
+/* Weakness box: image beside text, with a warning colour */
+.warning-box {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  background-color: #fde8eb;
+  border-color: #d7263d;
+  box-shadow: 4px 4px 0 #d7263d;
+}
+
+.warning-box img {
+  width: 150px;
+}
+
+
+/* ---------- 5. Responsive design: phones ---------- */
+
+@media (max-width: 600px) {
+
+  body {
+    font-size: 16px;
+  }
+
+  #site-header h1 {
+    font-size: 32px;
+  }
+
+  /* stack nav links on top of each other */
+  #main-nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  main {
+    width: 95%;
+  }
+
+  /* stack image above text, and stack the fact cards */
+  .profile-card,
+  .warning-box,
+  .fact-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .fact {
+    margin-bottom: 10px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}
