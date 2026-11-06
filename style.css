@@ -10,149 +10,182 @@
   box-sizing: border-box; /* padding and border count inside the width */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  background-color: #f4f1de;   /* warm off-white */
-  color: #1f2a44;              /* dark navy text */
-  font-family: Georgia, "Times New Roman", serif;
+  background-color: #faf6ee;    /* soft cream */
+  color: #1b2238;                /* near-black navy text */
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 h1,
 h2,
 h3 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
   line-height: 1.2;
+  letter-spacing: 0.3px;
 }
 
 h2 {
-  color: #d7263d;              /* glove red */
+  color: #16213e;
   margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #f4b740;
+  display: inline-block;
 }
 
 h3 {
-  color: #2b7fb0;
+  color: #2f6690;
+}
+
+p {
+  margin: 0 0 14px 0;
 }
 
 a {
-  color: #2b7fb0;
+  color: #2f6690;
   font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 a:hover {
-  color: #d7263d;
+  color: #e63950;
+  border-bottom-color: #e63950;
 }
 
 img {
-  max-width: 100%;             /* images never overflow their box */
+  max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
+  display: block;
 }
 
 
 /* ---------- 2. ID selectors: header and navigation ---------- */
 
 #site-header {
-  background-color: #1f2a44;
-  color: #f4f1de;
+  background: linear-gradient(135deg, #16213e 0%, #27314f 60%, #1b2238 100%);
+  color: #faf6ee;
   text-align: center;
-  padding: 30px 20px 10px 20px;
-  border-bottom: 6px solid #d7263d;
+  padding: 48px 20px 18px 20px;
 }
 
 #site-header h1 {
   margin: 0;
-  font-size: 48px;
-  letter-spacing: 2px;
+  font-size: 50px;
+  letter-spacing: 3px;
 }
 
 /* Flexbox layout #1: the navigation bar */
 #main-nav ul {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   list-style: none;
   padding: 0;
-  margin: 20px 0 10px 0;
+  margin: 24px 0 12px 0;
 }
 
 #main-nav a {
   display: block;
-  color: #f4f1de;
-  text-decoration: none;
-  padding: 8px 18px;
-  border: 2px solid #f4f1de;
-  border-radius: 20px;
+  color: #faf6ee;
+  font-weight: 600;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 30px;
+  background-color: rgba(250, 246, 238, 0.08);
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 #main-nav a:hover {
-  background-color: #f9c74f;
-  border-color: #f9c74f;
-  color: #1f2a44;
+  background-color: #f4b740;
+  color: #16213e;
+  transform: translateY(-2px);
 }
 
 
 /* ---------- 3. Page layout ---------- */
 
 main {
-  width: 90%;                  /* flexible width */
-  max-width: 900px;
-  margin: 30px auto;           /* centers the main column */
+  width: 90%;
+  max-width: 920px;
+  margin: 40px auto;
 }
 
 footer {
-  background-color: #1f2a44;
-  color: #f4f1de;
+  background-color: #16213e;
+  color: #cfd6e6;
   text-align: center;
-  padding: 15px;
-  font-size: 15px;
+  padding: 18px;
+  font-size: 14px;
+  margin-top: 20px;
 }
 
 
 /* ---------- 4. Reusable classes ---------- */
 
-/* .card is used on every section and on the fact boxes */
-.card {
-  background-color: #ffffff;
-  border: 2px solid #1f2a44;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 25px;
-  box-shadow: 4px 4px 0 #1f2a44;
-}
-
-/* .tagline is used in the header of both pages */
 .tagline {
   font-style: italic;
-  color: #f9c74f;
-  margin: 8px 0;
+  color: #f4b740;
+  margin: 4px 0 0 0;
+  font-size: 17px;
+}
+
+/* .card is the reusable container used for every section and fact box */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e7e0d2;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 26px;
+  box-shadow: 0 10px 24px rgba(27, 34, 56, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 14px 30px rgba(27, 34, 56, 0.13);
 }
 
 /* Flexbox layout #2: profile card (image beside text) */
 .profile-card {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 30px;
+  border-left: 6px solid #e63950;
 }
 
 .profile-card img {
-  width: 180px;
+  width: 170px;
+  flex-shrink: 0;
 }
 
 /* Character stats panel */
 .stat-panel {
-  background-color: #1f2a44;
-  color: #f4f1de;
-  border-left: 8px solid #f9c74f;
-  border-radius: 8px;
-  padding: 15px 20px;
-  margin-top: 20px;
+  background-color: #16213e;
+  color: #faf6ee;
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin-top: 22px;
 }
 
 .stat-panel h3 {
-  color: #f9c74f;
+  color: #f4b740;
   margin-top: 0;
+}
+
+.stat-panel ul {
+  margin-bottom: 0;
+}
+
+.skill-list {
+  padding-left: 20px;
 }
 
 .skill {
@@ -166,46 +199,70 @@ footer {
 }
 
 .fact {
-  flex: 1;                     /* each fact card takes an equal share */
+  flex: 1;
   margin-bottom: 0;
-  background-color: #eaf4fb;
+  background-color: #eef4f8;
+  border: none;
+  border-top: 5px solid #2f6690;
+  text-align: left;
 }
 
-/* Weakness box: image beside text, with a warning colour */
+.fact h3 {
+  margin-top: 0;
+}
+
+/* Weakness box: image beside text, with a warning accent */
 .warning-box {
   display: flex;
   align-items: center;
-  gap: 25px;
-  background-color: #fde8eb;
-  border-color: #d7263d;
-  box-shadow: 4px 4px 0 #d7263d;
+  gap: 30px;
+  background-color: #fdf0e8;
+  border-left: 6px solid #e63950;
+}
+
+.warning-box h2 {
+  border-bottom-color: #e63950;
 }
 
 .warning-box img {
   width: 150px;
+  flex-shrink: 0;
 }
 
 
-/* ---------- 5. Responsive design: phones ---------- */
+/* ---------- 5. Responsive design ---------- */
 
+/* Tablet: tighten spacing a little */
+@media (max-width: 900px) {
+  main {
+    width: 94%;
+  }
+
+  .card {
+    padding: 22px;
+  }
+}
+
+/* Phone: stack everything */
 @media (max-width: 600px) {
 
   body {
     font-size: 16px;
   }
 
+  #site-header {
+    padding: 36px 16px 14px 16px;
+  }
+
   #site-header h1 {
     font-size: 32px;
+    letter-spacing: 1px;
   }
 
   /* stack nav links on top of each other */
   #main-nav ul {
     flex-direction: column;
     gap: 10px;
-  }
-
-  main {
-    width: 95%;
   }
 
   /* stack image above text, and stack the fact cards */
@@ -216,11 +273,21 @@ footer {
     text-align: center;
   }
 
+  .profile-card img,
+  .warning-box img {
+    width: 130px;
+    margin: 0 auto;
+  }
+
   .fact {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    border-top: none;
+    border-left: 5px solid #2f6690;
+    text-align: left;
   }
 
   .card {
     padding: 18px;
+    border-radius: 12px;
   }
 }
