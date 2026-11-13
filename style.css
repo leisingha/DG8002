@@ -118,6 +118,30 @@ img {
   box-shadow: 2px 2px 0 #e8ff35;
 }
 
+/* the theme toggle button sits in the nav list, styled like the links */
+.theme-btn {
+  display: block;
+  background-color: #e8ff35;
+  color: #0a0a0a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 16px;
+  border: 3px solid #f5f3ee;
+  border-radius: 0;
+  padding: 10px 24px;
+  box-shadow: 5px 5px 0 #ff2f7e;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.theme-btn:hover {
+  background-color: #2e6ff2;
+  color: #ffffff;
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 #ff2f7e;
+}
+
 
 /* ---------- 3. Page layout ---------- */
 
@@ -238,6 +262,60 @@ footer {
   flex-shrink: 0;
 }
 
+/* buttons for the JS features (fact generator, greeting) */
+.btn {
+  display: inline-block;
+  background-color: #2e6ff2;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 16px;
+  border: 3px solid #0a0a0a;
+  border-radius: 0;
+  padding: 10px 22px;
+  margin: 6px 0 16px 0;
+  box-shadow: 5px 5px 0 #0a0a0a;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn:hover {
+  background-color: #ff2f7e;
+  color: #0a0a0a;
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 #0a0a0a;
+}
+
+/* text input for the personalized greeting */
+.text-input {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border: 3px solid #0a0a0a;
+  border-radius: 0;
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
+.text-input:focus {
+  outline: 3px solid #e8ff35;
+  outline-offset: 0;
+}
+
+/* the box that shows the JS-generated fact or greeting */
+.js-output {
+  background-color: #f5f3ee;
+  border: 3px solid #0a0a0a;
+  padding: 14px 16px;
+  margin: 0;
+  min-height: 1.6em;
+}
+
 
 /* ---------- 5. Responsive design ---------- */
 
@@ -297,4 +375,66 @@ footer {
     padding: 18px;
     box-shadow: 5px 5px 0 #0a0a0a;
   }
+}
+
+
+/* ---------- 6. Dark mode (toggled by script.js) ---------- */
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f3ee;
+}
+
+body.dark-mode h2 {
+  background-color: #e8ff35;
+  color: #0a0a0a;
+  border-color: #f5f3ee;
+}
+
+body.dark-mode h3 {
+  color: #f5f3ee;
+}
+
+body.dark-mode #site-header {
+  background-color: #000000;
+}
+
+body.dark-mode .card {
+  background-color: #1b1b1b;
+  color: #f5f3ee;
+  border-color: #f5f3ee;
+  box-shadow: 8px 8px 0 #f5f3ee;
+}
+
+body.dark-mode .profile-card {
+  box-shadow: 8px 8px 0 #ff2f7e;
+}
+
+body.dark-mode .warning-box {
+  background-color: #1b1b1b;
+  box-shadow: 8px 8px 0 #2e6ff2;
+}
+
+body.dark-mode .fact {
+  color: #0a0a0a;
+}
+
+body.dark-mode .fact:nth-child(2) {
+  color: #ffffff;
+}
+
+body.dark-mode .js-output {
+  background-color: #1b1b1b;
+  color: #f5f3ee;
+  border-color: #f5f3ee;
+}
+
+body.dark-mode .text-input {
+  background-color: #1b1b1b;
+  color: #f5f3ee;
+  border-color: #f5f3ee;
+}
+
+body.dark-mode footer {
+  background-color: #000000;
 }

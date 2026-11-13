@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Totally Accurate Guide to Lei</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -15,6 +16,7 @@
       <ul>
         <li><a href="index.html">home</a></li>
         <li><a href="classified.html">classified files</a></li>
+        <li><button id="theme-toggle" class="theme-btn" type="button">dark mode</button></li>
       </ul>
     </nav>
   </header>
@@ -75,6 +77,14 @@
         <a href="https://letterboxd.com" target="_blank">Letterboxd</a> gets more updates
         than his actual portfolio.
       </p>
+    </section>
+
+    <section id="greeting" class="card">
+      <h2>who's reading this</h2>
+      <p>type a name. find out if it was worth it.</p>
+      <input type="text" id="name-input" class="text-input" placeholder="your name">
+      <button id="greet-btn" class="btn" type="button">say hi</button>
+      <p id="greeting-display" class="js-output">nothing to see yet.</p>
     </section>
 
   </main>
