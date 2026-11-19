@@ -71,3 +71,155 @@ if (greetBtn && greetingDisplay && nameInput) {
     }
   });
 }
+
+
+// ---------- 4. The Watchlist (dynamic list + drag to reorder) ----------
+
+// application state: an array of objects, one per entry
+let movies = [];
+let nextMovieId = 1;
+
+// tracks which entry is currently being dragged, by id
+let draggedId = null;
+
+const watchlistForm = document.getElementById("watchlist-form");
+const watchlistInput = document.getElementById("watchlist-input");
+const watchlistStatus = document.getElementById("watchlist-status");
+const watchlistList = document.getElementById("watchlist-list");
+
+if (watchlistForm && watchlistInput && watchlistStatus && watchlistList) {
+
+  // builds the <ul> from the current state of the movies array
+  function renderWatchlist() {
+
+    // clear out whatever is there and rebuild it from scratch
+    watchlistList.innerHTML = "";
+
+    if (movies.length === 0) {
+      watchlistStatus.textContent = "nothing queued yet.";
+      return;
+    }
+
+    const watchedCount = movies.filter(function (movie) {
+      return movie.watched;
+    }).length;
+
+    watchlistStatus.textContent = movies.length + " queued, " + watchedCount + " watched.";
+
+    movies.forEach(function (movie) {
+      const item = document.createElement("li");
+      item.className = "watchlist-item";
+      item.draggable = true;
+      item.dataset.id = movie.id;
+
+      if (movie.watched) {
+        item.classList.add("watched");
+      }
+
+      const title = document.createElement("span");
+      title.className = "watchlist-title";
+      title.textContent = movie.title;
+
+      const watchBtn = document.createElement("button");
+      watchBtn.type = "button";
+      watchBtn.className = "watchlist-btn";
+      watchBtn.textContent = movie.watched ? "undo" : "watched";
+
+      const removeBtn = document.createElement("button");
+      removeBtn.type = "button";
+      removeBtn.className = "watchlist-btn watchlist-remove";
+      removeBtn.textContent = "remove";
+
+      // mouse event: toggle watched state on click
+      watchBtn.addEventListener("click", function () {
+        movie.watched = !movie.watched;
+        renderWatchlist();
+      });
+
+      // mouse event: remove this entry on click
+      removeBtn.addEventListener("click", function () {
+        movies = movies.filter(function (m) {
+          return m.id !== movie.id;
+        });
+        renderWatchlist();
+      });
+
+      // drag-and-drop events: reorder the list by dragging an entry
+      item.addEventListener("dragstart", function () {
+        draggedId = movie.id;
+        item.classList.add("dragging");
+      });
+
+      item.addEventListener("dragend", function () {
+        item.classList.remove("dragging");
+      });
+
+      item.addEventListener("dragover", function (event) {
+        // required so the element is allowed to receive a drop
+        event.preventDefault();
+        item.classList.add("drag-over");
+      });
+
+      item.addEventListener("dragleave", function () {
+        item.classList.remove("drag-over");
+      });
+
+      item.addEventListener("drop", function (event) {
+        event.preventDefault();
+        item.classList.remove("drag-over");
+
+        if (draggedId === null || draggedId === movie.id) {
+          return;
+        }
+
+        const fromIndex = movies.findIndex(function (m) {
+          return m.id === draggedId;
+        });
+        const toIndex = movies.findIndex(function (m) {
+          return m.id === movie.id;
+        });
+
+        const [draggedMovie] = movies.splice(fromIndex, 1);
+        movies.splice(toIndex, 0, draggedMovie);
+        draggedId = null;
+        renderWatchlist();
+      });
+
+      item.appendChild(title);
+      item.appendChild(watchBtn);
+      item.appendChild(removeBtn);
+      watchlistList.appendChild(item);
+    });
+  }
+
+  // form event: add a new title to the list
+  watchlistForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const title = watchlistInput.value.trim();
+
+    if (title === "") {
+      watchlistStatus.textContent = "type a title first.";
+      return;
+    }
+
+    const alreadyQueued = movies.some(function (movie) {
+      return movie.title.toLowerCase() === title.toLowerCase();
+    });
+
+    if (alreadyQueued) {
+      watchlistStatus.textContent = "\"" + title + "\" is already on the pile.";
+      watchlistInput.value = "";
+      return;
+    }
+
+    movies.push({ id: nextMovieId, title: title, watched: false });
+    nextMovieId = nextMovieId + 1;
+
+    watchlistInput.value = "";
+    watchlistInput.focus();
+    renderWatchlist();
+  });
+
+  renderWatchlist();
+}

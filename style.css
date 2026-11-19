@@ -312,8 +312,84 @@ footer {
   background-color: #f5f3ee;
   border: 3px solid #0a0a0a;
   padding: 14px 16px;
-  margin: 0;
+  margin: 0 0 16px 0;
   min-height: 1.6em;
+}
+
+/* watchlist feature: form + dynamic list */
+#watchlist-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+#watchlist-form .text-input {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 0;
+}
+
+.watchlist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.watchlist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #ffffff;
+  border: 3px solid #0a0a0a;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  cursor: grab;
+}
+
+.watchlist-item.dragging {
+  opacity: 0.4;
+}
+
+.watchlist-item.drag-over {
+  border-color: #2e6ff2;
+  box-shadow: 4px 4px 0 #2e6ff2;
+}
+
+.watchlist-title {
+  flex: 1;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.watchlist-item.watched .watchlist-title {
+  text-decoration: line-through;
+  color: #6b6b6b;
+}
+
+.watchlist-btn {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 13px;
+  background-color: #e8ff35;
+  border: 2px solid #0a0a0a;
+  border-radius: 0;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.watchlist-btn:hover {
+  background-color: #2e6ff2;
+  color: #ffffff;
+}
+
+.watchlist-remove {
+  background-color: #ff2f7e;
+}
+
+.watchlist-remove:hover {
+  background-color: #0a0a0a;
+  color: #ffffff;
 }
 
 
@@ -437,4 +513,14 @@ body.dark-mode .text-input {
 
 body.dark-mode footer {
   background-color: #000000;
+}
+
+body.dark-mode .watchlist-item {
+  background-color: #1b1b1b;
+  color: #f5f3ee;
+  border-color: #f5f3ee;
+}
+
+body.dark-mode .watchlist-item.watched .watchlist-title {
+  color: #8a8a8a;
 }
