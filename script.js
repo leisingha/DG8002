@@ -223,3 +223,93 @@ if (watchlistForm && watchlistInput && watchlistStatus && watchlistList) {
 
   renderWatchlist();
 }
+
+
+// ---------- 5. Ghibli Roulette (public API, fetch + async/await) ----------
+
+const GHIBLI_API_URL = "https://ghibliapi.vercel.app/films";
+
+const ghibliBtn = document.getElementById("ghibli-btn");
+const ghibliResult = document.getElementById("ghibli-result");
+
+if (ghibliBtn && ghibliResult) {
+
+  // keep the film list around after the first successful fetch,
+  // so spinning again doesn't need to hit the network every time
+  let ghibliFilms = [];
+
+  async function getRandomGhibliFilm() {
+    ghibliBtn.disabled = true;
+    ghibliResult.innerHTML = '<p class="js-output">spinning the wheel...</p>';
+
+    try {
+      // only fetch the list once per page visit
+      if (ghibliFilms.length === 0) {
+        const response = await fetch(GHIBLI_API_URL);
+
+        if (!response.ok) {
+          throw new Error("API responded with status " + response.status);
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data) || data.length === 0) {
+          throw new Error("API returned no films");
+        }
+
+        ghibliFilms = data;
+      }
+
+      const randomIndex = Math.floor(Math.random() * ghibliFilms.length);
+      const film = ghibliFilms[randomIndex];
+      renderGhibliFilm(film);
+
+    } catch (error) {
+      ghibliResult.innerHTML =
+        '<p class="js-output">couldn\'t reach the Ghibli archive right now. try again in a bit.</p>';
+    } finally {
+      ghibliBtn.disabled = false;
+    }
+  }
+
+  function renderGhibliFilm(film) {
+    // clear out the previous result
+    ghibliResult.innerHTML = "";
+
+    const card = document.createElement("div");
+    card.className = "ghibli-card";
+
+    if (film.image) {
+      const img = document.createElement("img");
+      img.src = film.image;
+      img.alt = film.title + " poster";
+      img.className = "ghibli-poster";
+      card.appendChild(img);
+    }
+
+    const info = document.createElement("div");
+    info.className = "ghibli-info";
+
+    const title = document.createElement("h3");
+    title.textContent = film.title + " (" + film.release_date + ")";
+    info.appendChild(title);
+
+    if (film.rt_score) {
+      const score = document.createElement("p");
+      score.className = "ghibli-score";
+      score.textContent = "Rotten Tomatoes: " + film.rt_score + "%";
+      info.appendChild(score);
+    }
+
+    const description = document.createElement("p");
+    const fullText = film.description || "no description available.";
+    description.textContent =
+      fullText.length > 220 ? fullText.slice(0, 220).trim() + "..." : fullText;
+    info.appendChild(description);
+
+    card.appendChild(info);
+    ghibliResult.appendChild(card);
+  }
+
+  ghibliBtn.addEventListener("click", getRandomGhibliFilm);
+}

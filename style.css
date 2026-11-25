@@ -392,6 +392,41 @@ footer {
   color: #ffffff;
 }
 
+/* ghibli roulette feature: API result card */
+.ghibli-result {
+  margin-top: 16px;
+}
+
+.ghibli-card {
+  display: flex;
+  gap: 20px;
+  background-color: #ffffff;
+  border: 3px solid #0a0a0a;
+  padding: 18px;
+  box-shadow: 6px 6px 0 #2e6ff2;
+}
+
+.ghibli-poster {
+  width: 120px;
+  flex-shrink: 0;
+  border: 3px solid #0a0a0a;
+}
+
+.ghibli-info h3 {
+  margin: 0 0 8px 0;
+  text-decoration: none;
+}
+
+.ghibli-score {
+  display: inline-block;
+  background-color: #e8ff35;
+  border: 2px solid #0a0a0a;
+  font-weight: 900;
+  font-size: 13px;
+  padding: 2px 10px;
+  margin: 0 0 10px 0;
+}
+
 
 /* ---------- 5. Responsive design ---------- */
 
@@ -431,9 +466,15 @@ footer {
   /* stack image above text, and stack the fact cards */
   .profile-card,
   .warning-box,
-  .fact-row {
+  .fact-row,
+  .ghibli-card {
     flex-direction: column;
     text-align: center;
+  }
+
+  .ghibli-poster {
+    width: 140px;
+    margin: 0 auto;
   }
 
   .profile-card img,
@@ -523,4 +564,10 @@ body.dark-mode .watchlist-item {
 
 body.dark-mode .watchlist-item.watched .watchlist-title {
   color: #8a8a8a;
+}
+
+body.dark-mode .ghibli-card {
+  background-color: #1b1b1b;
+  color: #f5f3ee;
+  border-color: #f5f3ee;
 }
